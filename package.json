@@ -6,10 +6,9 @@
   "scripts": {
     "start": "start-storybook -c .storybook",
     "build:storybook": "build-storybook",
-    "lint": "yarn prettier && yarn eslint",
-    "eslint": "eslint .",
+    "lint": "eslint .",
     "prettier": "prettier --write '**/*.{js,json,css,md}'",
-    "test": "jest"
+    "test": "yarn lint"
   },
   "keywords": [
     "react",
