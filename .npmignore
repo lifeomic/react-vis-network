@@ -1,5 +1,8 @@
 node_modules
 
+__image_snapshots__
+coverage
+
 stories
 .storybook
 storybook-static

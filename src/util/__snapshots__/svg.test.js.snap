@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`reactToSvgImageUrl converts react elements into data:image strings 1`] = `"data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D%220%200%2048%2048%22%3E%3Ccircle%20cx%3D%2218%22%20cy%3D%2218%22%20r%3D%2212%22%3E%3C%2Fcircle%3E%3C%2Fsvg%3E"`;

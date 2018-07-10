@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import leMisData from './fixtures/leMiserables';
+import graphData from './fixtures/graphData';
 import { Network, Edge, Node, ClusterByConnection } from '../src';
 import UserIcon from 'react-feather/dist/icons/user';
 import UsersIcon from 'react-feather/dist/icons/users';
@@ -8,28 +8,33 @@ import CustomIcon from './components/CustomIcon';
 
 const style = { height: '90vh', width: '90vw' };
 
+const networkProps = {
+  style,
+  options: {
+    layout: {
+      randomSeed: 42
+    }
+  }
+};
+
 storiesOf('Clustering', module).add('By Connection', () => (
-  <Network style={style}>
-    {leMisData.nodes.map(node => (
+  <Network {...networkProps}>
+    {graphData.nodes.map(node => (
       <Node key={node.id} {...node} icon={UserIcon} component={CustomIcon} />
     ))}
-    {leMisData.edges.map(edge => <Edge key={edge.id} {...edge} />)}
-    {
-      // This cluster is hidden under the Valjean Cluster, order matters.
-      // clusters are applied top to bottom
-    }
+    {graphData.edges.map(edge => <Edge key={edge.id} {...edge} />)}
     <ClusterByConnection
-      id={'cluster:2'}
-      rootNodeId={'node:57'}
-      label={'Mabeuf Cluster'}
+      id={'cluster:1'}
+      rootNodeId={0}
+      label={'0 Cluster'}
       color={'red'}
       icon={UsersIcon}
       component={CustomIcon}
     />
     <ClusterByConnection
-      id={'cluster:1'}
-      rootNodeId={'node:11'}
-      label={'Valjean Cluster'}
+      id={'cluster:2'}
+      rootNodeId={15}
+      label={'15 Cluster'}
       color={'red'}
       icon={UsersIcon}
       component={CustomIcon}

@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { reactToSvgImageUrl, RafDebouncer } from './util';
+import { reactToSvgImageUrl } from './util/svg';
+import RafDebouncer from './util/RafDebouncer';
 
 const style = {
   position: 'absolute',
@@ -91,7 +92,7 @@ export default class VisModule extends PureComponent {
 
     if (component) {
       options.image = reactToSvgImageUrl(component(this.props));
-      options.shape = 'image';
+      options.shape = options.shape || 'image';
     }
 
     return options;
@@ -134,7 +135,7 @@ export default class VisModule extends PureComponent {
   }
 
   static propTypes = {
-    id: PropTypes.string.isRequired,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     component: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
     decorator: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
     vis: PropTypes.shape({
