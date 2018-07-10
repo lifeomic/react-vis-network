@@ -1,6 +1,10 @@
 import Module from './Module';
 
 export default class VisEdge extends Module {
+  updateDecorator() {
+    // Edges don't support decorators, override super class
+  }
+
   componentDidMount() {
     super.componentDidMount();
 

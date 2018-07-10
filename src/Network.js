@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { DataSet, Network } from 'vis/dist/vis-network.min';
 
 const defaultStyles = {
+  position: 'relative',
   width: '100%',
   height: '100%',
   overflow: 'hidden'
@@ -70,7 +71,12 @@ export default class VisNetwork extends PureComponent {
   }
 
   render() {
-    const { style = defaultStyles, children } = this.props;
+    const { style, children } = this.props;
+
+    const appliedStyles = {
+      ...defaultStyles,
+      ...style
+    };
 
     const extendedChildren = React.Children.map(children, child =>
       React.cloneElement(child, {
@@ -83,13 +89,18 @@ export default class VisNetwork extends PureComponent {
         <div
           ref={this.visContainerRef}
           className={this.props.className}
-          style={style}
+          style={appliedStyles}
         >
           {extendedChildren}
         </div>
       </>
     );
   }
+
+  static defaultProps = {
+    options: {},
+    style: {}
+  };
 
   static propTypes = {
     children: PropTypes.node,
