@@ -2,9 +2,9 @@
 
 [![Build Status](https://travis-ci.org/lifeomic/react-vis-network.svg?branch=master)](https://travis-ci.org/lifeomic/react-vis-network)
 
-
 ## Overview
-react-vis-network uses a declarative approach to defining [vis.js](https://github.com/almende/vis). networks. This allows developers to work in React using normal statefull approaches like [Redux](https://github.com/reduxjs/redux) and have the underlying network chart manage it's own lifecycle.
+
+react-vis-network uses a declarative approach to defining [vis.js](https://github.com/almende/vis) networks. This allows developers to work in React using normal stateful approaches like [Redux](https://github.com/reduxjs/redux) and have the underlying network chart manage it's own lifecycle.
 
 ## Example
 
@@ -16,13 +16,13 @@ class MyNetwork extends Component {
   render() {
     return (
       <Network>
-        <Node id='vadar' label='Darth Vadar' />
-        <Node id='luke' label='Luke Skywalker' />
-        <Node id='leia' label='Leia Organa' />
-        <Edge id='1' from='vadar' to='luke' />
-        <Edge id='1' from='vadar' to='leia' />
+        <Node id="vader" label="Darth Vader" />
+        <Node id="luke" label="Luke Skywalker" />
+        <Node id="leia" label="Leia Organa" />
+        <Edge id="1" from="vadar" to="luke" />
+        <Edge id="2" from="vadar" to="leia" />
       </Network>
-    )
+    );
   }
 }
 ```
@@ -30,9 +30,11 @@ class MyNetwork extends Component {
 ## API
 
 ### < Network />
+
 `<Network />` is the top level component that defines your network. All `Node`s, `Edge`s and `Cluster*` components need to be inside a `Network` to work properly.
 
 #### Props
+
 `options`: Object of [vis options](http://visjs.org/docs/network/#options) to configure the look and feel, physics, and interaction patterns in the graph. All options are passed directly to vis and can be overriden on a case by case bases by setting individual options on each `Node` or `Edge`
 
 `scale`: [Zoom scale](http://visjs.org/docs/network/#event_zoom) of the network. Defined as a number from 0-1 where 1 is 100% zoomed and 0 is zoomed out infinitely. As returned from `network.getScale`.
@@ -41,8 +43,8 @@ class MyNetwork extends Component {
 
 `style`/`className`: Normal style and className props to enable styling the network's wrapping element. **NB:** Overidding `position: relative` and `overflow: hidden` will result in wonky node `decorator` behavoir.
 
-
 ### < Node />
+
 A `Node` represents a vis.js [network node](http://visjs.org/docs/network/nodes.html). As props, a `Node` accepts [all options](http://visjs.org/docs/network/nodes.html#optionTable) accepted in normal configuration. It also accepts two special props `component` and `decorator`.
 
 `component`: SVG element to be rendered as the Node in the Network. `component` is a [render prop](https://reactjs.org/docs/render-props.html) recieves all of the props passed to `Node` and returns a <svg> react component. The svg will be rendered as the `image` of the node. Helpful tip, you can pass additional props to `node` that can be used in your render prop to dynamically change your image.
@@ -73,11 +75,29 @@ const CustomIcon = ({ icon, color = '#5596ed' }) => {
 // Generate differnt icons per node
 const MyNetwork = () => (
   <Network>
-    <Node id='vadar' label='Darth Vadar' component={CustomIcon} color='black' icon={Sith}/>
-    <Node id='luke' label='Luke Skywalker' component={CustomIcon} color='white' icon={Jedi}/>
-    <Node id='leia' label='Leia Organa' component={CustomIcon} color='gold' icon={Princess}/>
-    <Edge id='1' from='vadar' to='luke' />
-    <Edge id='1' from='vadar' to='leia' />
+    <Node
+      id="vader"
+      label="Darth Vader"
+      component={CustomIcon}
+      color="black"
+      icon={Sith}
+    />
+    <Node
+      id="luke"
+      label="Luke Skywalker"
+      component={CustomIcon}
+      color="white"
+      icon={Jedi}
+    />
+    <Node
+      id="leia"
+      label="Leia Organa"
+      component={CustomIcon}
+      color="gold"
+      icon={Princess}
+    />
+    <Edge id="1" from="vadar" to="luke" />
+    <Edge id="2" from="vadar" to="leia" />
   </Network>
 );
 ```
@@ -111,14 +131,16 @@ const MyNetwork = () => (
 );
 ```
 
-**NB:** Because this is a positioned html element, it can recieve form events like `clicking` and inputs. While fairly performant in positioning and rendering, it can be straining if many nodes have decorators and should be used sparingly. For static (non-interactable) content, it would be better to use a `component` with a changing prop to re-render it.
+**NB:** Because this is a positioned HTML element, it can recieve form events like `click` and `input`. While fairly performant in positioning and rendering, it can be straining if many nodes have decorators and should be used sparingly. For static (non-interactable) content, it would be better to use a `component` with a changing prop to re-render it.
 
 ### < Edge />
+
 An `Edge` represents a [vis.js edge](http://visjs.org/docs/network/edges.html) and connects nodes together.
 
-Edges accept all of the [options](http://visjs.org/docs/network/edges.html#optionTable) vis exposes for edges as props. One specialy note, vis doesn't require that edges have an `id`, react-vis-network does in order to keep the network updated.
+Edges accept all of the [options](http://visjs.org/docs/network/edges.html#optionTable) vis exposes for edges as props. One specific note, vis doesn't require that edges have an `id`, react-vis-network does in order to keep the network updated.
 
 ### < ClusterByConnection />
+
 A `ClusterByConnection` is a representation of a [vis.js cluster](http://visjs.org/docs/network/#methodClustering). This particular cluster implementation collapses all nodes around, and including, it's `rootNodeId` into a cluster.
 
 `ClusterByConnection` takes all props that `Node` does including `component` and `decorator`.
@@ -126,7 +148,8 @@ A `ClusterByConnection` is a representation of a [vis.js cluster](http://visjs.o
 `rootNodeId`: `id` of a `Node` for which to cluster around.
 
 ### Performance Considerations
-All exported components are [Pure Components](https://reactjs.org/docs/react-api.html#reactpurecomponent). It's important to not define anonymous functions and objects inside the render function as it will cause unnessisary re-renders.
+
+All exported components are [Pure Components](https://reactjs.org/docs/react-api.html#reactpurecomponent). It's important to not define anonymous functions and objects inside the render function as it will cause unnecessary re-renders.
 
 ```js
 // bad, re-renders every time
@@ -145,7 +168,8 @@ render () {
 Use `decorators` on `Node`s sparingly, if you can do it in the `component` you should.
 
 ### Extending, custom clusters, and custom modules
-> ⚠️ Advanced topics, here there be dragons.
+
+> ⚠️ Advanced topics, here be dragons.
 
 Want to write a custom Cluster component? Want to add a bit to the lifecycle of a node?
 
@@ -154,11 +178,13 @@ The base of `Node`s and `Cluster`s is a `Module`. Take a peak at the [source](ht
 The design of each component is to manage it's lifecycle inside the vis network with react lifecycle methods. Every `child` inside a `Network` is passed as props a `network` (vis.Network), `edges` (vis.Dataset) and `nodes` (vis.Dataset).
 
 #### Helpers
+
 In order to help you roll your own lifecycle methods, the internal converter for `component` and `decorator` is exposed as `reactToSvgImageUrl`.
 
-`reactToSvgImageUrl (element) -> String`: Accepts a JSX element and returns it rendered as a dat:aimage string.
+`reactToSvgImageUrl (element) -> String`: Accepts a JSX element and returns it rendered as a data:image string.
 
 ### Accessing the underlying vis `network`
+
 > ⚠️ This is an escape hatch, if you find yourself needing to do this, it's likely that the package authors simply haven't thought of your use-case. We would like to! Please open an issue and we can work to build a supported solution.
 
 The `Network` component has, as instance properties, `network` (a vis.js network), `edges` (a vis.js Dataset representing it's edges), and `nodes` a vis.js Dataset representing it's nodes).
