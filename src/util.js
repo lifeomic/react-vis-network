@@ -8,3 +8,15 @@ export const reactToSvgImageUrl = element => {
   const svgString = ReactDOMServer.renderToStaticMarkup(element);
   return svgToDataURI(svgString);
 };
+
+export class RafDebouncer {
+  rafTimeout = null;
+
+  requestAnimationFrame(callback) {
+    if (this.rafTimeout) {
+      cancelAnimationFrame(this.rafTimeout);
+    }
+
+    this.rafTimeout = requestAnimationFrame(callback);
+  }
+}

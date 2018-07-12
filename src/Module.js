@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import RafDebouncer from '../util/RafDebouncer';
-import { reactToSvgImageUrl } from './util';
+import { reactToSvgImageUrl, RafDebouncer } from './util';
 
 const style = {
   position: 'absolute',
+  display: 'none',
   top: 0,
   left: 0
 };
@@ -41,24 +41,25 @@ export default class VisModule extends PureComponent {
         id,
         vis: { network }
       } = this.props;
+      const decoratorEl = this.decoratorRef.current;
 
-      if (network && this.decoratorRef.current) {
-        const boundingBox = network.getBoundingBox(id);
-        const networkPositions = network.getPositions([id]);
+      if (network && decoratorEl) {
+        const { [id]: canvasPosition } = network.getPositions([id]);
 
-        // Injection from same source
-        /* eslint-disable security/detect-object-injection */
-        if (networkPositions && networkPositions[id]) {
-          const contextPos = { x: networkPositions[id].x, y: boundingBox.top };
-          const { x, y } = network.canvasToDOM(contextPos);
+        if (canvasPosition) {
+          const domPosition = network.canvasToDOM(canvasPosition);
+          const { height, width } = decoratorEl.getBoundingClientRect();
 
-          this.decoratorRef.current.style.transform = `translateX(${x}px) translateY(${y}px)`;
+          const x = domPosition.x - width / 2;
+          const y = domPosition.y - height / 2;
+
+          decoratorEl.style.display = 'block';
+          decoratorEl.style.transform = `translateX(${x}px) translateY(${y}px)`;
         }
-        /* eslint-enable security/detect-object-injection */
       }
     });
 
-  updateDecoratorListener = () => {
+  updateDecorator() {
     const {
       vis: { network },
       decorator
@@ -82,7 +83,7 @@ export default class VisModule extends PureComponent {
     if (this.hasAfterDrawingListener) {
       this.moveDecorator();
     }
-  };
+  }
 
   getModuleOptions() {
     const { component, ...entityOptions } = this.props;
@@ -97,11 +98,11 @@ export default class VisModule extends PureComponent {
   }
 
   componentDidMount() {
-    this.updateDecoratorListener();
+    this.updateDecorator();
   }
 
   componentDidUpdate() {
-    this.updateDecoratorListener();
+    this.updateDecorator();
   }
 
   componentWillUnmount() {
