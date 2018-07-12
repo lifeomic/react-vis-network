@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const CustomIcon = ({ icon, color = '#5596ed' }) => {
-  const viewBox = 48;
-  const iconSize = 24;
+  const viewBox = 36;
+  const iconSize = 20;
   const pad = (viewBox - iconSize) / 2;
   const center = viewBox / 2;
 
@@ -13,9 +13,9 @@ const CustomIcon = ({ icon, color = '#5596ed' }) => {
       viewBox={`0 0 ${viewBox} ${viewBox}`}
     >
       <g>
-        <circle cx={center} cy={center} r={18} fill={color} />
+        <circle cx={center} cy={center} r={16} fill={color} />
         <g transform={`translate(${pad}, ${pad})`}>
-          {React.createElement(icon, { color: 'white' })}
+          {React.createElement(icon, { color: 'white', size: iconSize })}
         </g>
       </g>
     </svg>

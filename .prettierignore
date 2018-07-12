@@ -1,8 +1,4 @@
 node_modules
-
 coverage
-
-*.log
-
 storybook-static
-__diff_output__
+lib

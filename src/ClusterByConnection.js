@@ -8,7 +8,7 @@ export default class ClusterByConnection extends Module {
       vis: { network }
     } = this.props;
 
-    // Initial load, skip
+    // Initial load, skip and wait for network
     if (!network) {
       return;
     }
@@ -44,6 +44,9 @@ export default class ClusterByConnection extends Module {
       vis: { network }
     } = this.props;
 
-    network.openCluster(id);
+    // Storybook HMR is a bit weird and this prevents strange errors
+    if (network.clustering) {
+      network.openCluster(id);
+    }
   }
 }
