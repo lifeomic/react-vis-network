@@ -9,7 +9,7 @@ initStoryshots({
     // storybookUrl: 'http://localhost:9001',
     storybookUrl: `file://${path.resolve(__dirname, '../storybook-static')}`,
     getMatchOptions: () => ({
-      failureThreshold: 0.1,
+      failureThreshold: 0.15,
       failureThresholdType: 'percent'
     })
   })

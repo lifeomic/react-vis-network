@@ -104,7 +104,7 @@ const MyNetwork = () => (
 
 **NB:** This is simply syntactic sugar over [using HTML in Nodes](https://github.com/almende/vis/blob/master/examples/network/nodeStyles/HTMLInNodes.html) and will end up being a data+image. You will not recieve dom events through this component, use `Network`'s event system or `decorator`s instead.
 
-`decorator`: A react element positioned in the center of rendered `Node`. A decorator is similar to `component` in that it's a [render prop](https://reactjs.org/docs/render-props.html) that recieves the props of a the node, and returns a react element. This element however doesn't need to be an svg.
+`decorator`: A react element positioned at the top center of rendered `Node`. A decorator is similar to `component` in that it's a [render prop](https://reactjs.org/docs/render-props.html) that recieves the props of a the node, and returns a react element. This element however doesn't need to be an svg.
 
 ```js
 const Decorator = props => {

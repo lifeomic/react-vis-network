@@ -1,11 +1,12 @@
 {
   "name": "react-vis-network",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Declarative vis.js network for react",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "start": "start-storybook -p 9001 -c .storybook",
-    "build": "yarn build:storybook",
+    "build": "yarn build:src && yarn build:storybook",
+    "build:src": "rm -rf lib && babel src -d lib --ignore '**/*.test.js'",
     "build:storybook": "build-storybook",
     "lint": "eslint .",
     "prettier": "prettier --write '**/*.{js,json,css,md}'",
@@ -23,10 +24,13 @@
   "license": "MIT",
   "peerDependencies": {
     "react": "^16.0.0",
-    "react-dom": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "dependencies": {
     "vis": "^4.0.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.52",
     "@babel/core": "^7.0.0-beta.52",
     "@babel/preset-env": "^7.0.0-beta.52",
     "@babel/preset-react": "^7.0.0-beta.52",
@@ -56,8 +60,7 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-feather": "^1.1.1",
-    "react-test-renderer": "^16.4.1",
-    "vis": "^4.21.0"
+    "react-test-renderer": "^16.4.1"
   },
   "husky": {
     "hooks": {

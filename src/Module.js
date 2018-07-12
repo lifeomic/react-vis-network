@@ -48,13 +48,18 @@ export default class VisModule extends PureComponent {
         const { [id]: canvasPosition } = network.getPositions([id]);
 
         if (canvasPosition) {
-          const domPosition = network.canvasToDOM(canvasPosition);
+          const boundingBox = network.getBoundingBox(id);
+          const topCenterPosition = { x: canvasPosition.x, y: boundingBox.top };
+
+          const domPosition = network.canvasToDOM(topCenterPosition);
+
+          // Remove `display: none` before getting the element size
+          decoratorEl.style.display = 'block';
           const { height, width } = decoratorEl.getBoundingClientRect();
 
           const x = domPosition.x - width / 2;
-          const y = domPosition.y - height / 2;
+          const y = domPosition.y - height;
 
-          decoratorEl.style.display = 'block';
           decoratorEl.style.transform = `translateX(${x}px) translateY(${y}px)`;
         }
       }
