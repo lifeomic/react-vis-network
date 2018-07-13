@@ -19,8 +19,8 @@ class MyNetwork extends Component {
         <Node id="vader" label="Darth Vader" />
         <Node id="luke" label="Luke Skywalker" />
         <Node id="leia" label="Leia Organa" />
-        <Edge id="1" from="vadar" to="luke" />
-        <Edge id="2" from="vadar" to="leia" />
+        <Edge id="1" from="vader" to="luke" />
+        <Edge id="2" from="vader" to="leia" />
       </Network>
     );
   }
@@ -41,7 +41,7 @@ class MyNetwork extends Component {
 
 `position`: Object (`{ x, y }`) containing coordinates of the central focus point. As returned from `network.getViewPosition`.
 
-`style`/`className`: Normal style and className props to enable styling the network's wrapping element. **NB:** Overidding `position: relative` and `overflow: hidden` will result in wonky node `decorator` behavoir.
+`style`/`className`: Normal style and className props to enable styling the network's wrapping element. **NB:** Overidding `position: relative` and `overflow: hidden` will result in wonky node `decorator` behavior.
 
 ### < Node />
 
@@ -96,8 +96,8 @@ const MyNetwork = () => (
       color="gold"
       icon={Princess}
     />
-    <Edge id="1" from="vadar" to="luke" />
-    <Edge id="2" from="vadar" to="leia" />
+    <Edge id="1" from="vader" to="luke" />
+    <Edge id="2" from="vader" to="leia" />
   </Network>
 );
 ```
@@ -122,16 +122,16 @@ const Decorator = props => {
 // cause differnet actions in your Decorator
 const MyNetwork = () => (
   <Network>
-    <Node id='vadar' label='Darth Vadar' decorator={Decorator} />
+    <Node id='vader' label='Darth Vader' decorator={Decorator} />
     <Node id='luke' label='Luke Skywalker' decorator={Decorator} />
     <Node id='leia' label='Leia Organa' decorator={Decorator} />
-    <Edge id='1' from='vadar' to='luke' />
-    <Edge id='1' from='vadar' to='leia' />
+    <Edge id='1' from='vader' to='luke' />
+    <Edge id='1' from='vader' to='leia' />
   </Network>
 );
 ```
 
-**NB:** Because this is a positioned HTML element, it can recieve form events like `click` and `input`. While fairly performant in positioning and rendering, it can be straining if many nodes have decorators and should be used sparingly. For static (non-interactable) content, it would be better to use a `component` with a changing prop to re-render it.
+**NB:** Because this is a positioned HTML element, it can recieve DOM events like `click` and `input`. While fairly performant in positioning and rendering, it can be straining if many nodes have decorators and should be used sparingly. For static (non-interactable) content, it would be better to use a `component` with a changing prop to re-render it.
 
 ### < Edge />
 
