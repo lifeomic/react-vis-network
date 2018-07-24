@@ -60,6 +60,7 @@ export default class VisNetwork extends PureComponent {
     const { options, scale, position } = this.props;
     const network = this.network;
 
+    /* istanbul ignore next */
     if (options !== prevProps.options) {
       if (options.edges) {
         // Avoid blended nested object properties from throwing errors.
