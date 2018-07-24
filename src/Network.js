@@ -60,7 +60,15 @@ export default class VisNetwork extends PureComponent {
     const { options, scale, position } = this.props;
     const network = this.network;
 
-    network.setOptions(options);
+    if (options !== prevProps.options) {
+      if (options.edges) {
+        // Avoid blended nested object properties from throwing errors.
+        ['forceDirection', 'roundness', 'type'].forEach(prop => {
+          delete options.edges[prop];
+        });
+      }
+      network.setOptions(options);
+    }
 
     if (scale !== prevProps.scale || position !== prevProps.position) {
       network.moveTo({
