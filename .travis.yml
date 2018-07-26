@@ -25,12 +25,12 @@ notifications:
 deploy:
 - provider: npm
   skip-cleanup: true
-  email: barlockm@gmail.com
-  api_key:
-      secure: dUMtMBv/n1qXoykp6iOl79pHdCPA8OSgAHP3aWuHbrKYXvylgHGvX52QSM+Mt0gZCcHQRhb0Yw2YFZnr4R9EX9CWUq+Bjd3fg93X3ga63fpswbDHDyNNW8i9UlMSg09M6T63c00PsvOBiGKgzLgl8iLMy++WEWlsWwPWLmsRvmJx/u3TyJTV97xsPnYrV+Uv0SbuueRjlSi8JmiU5LOXXQ38tp181lx5rFKcqWxrPR+tQaxx+yzJnp2GEcptv6EjT54SXzhBIXOx4eh4ICjzYG+W9NuieClgZCq3sJ0gkJI9+d1WtKMLre5k407B6+UXdNC1nFmu05iMn6NtB98Y29KCvwMuxS/uh7+Z90ghPr+z/a9BDN1J5AyoItqiqFOeDKuW/BBz5Lh3mV/VPYNKAGz7tKV9D0D8HHsfU1BjkVos8Y6yGXg2o3fuW4VYrQsDiCrbpQDTmFmEsW/bMAXO9dRnA62QQcwxf5DlcarBsc6stbKbYAS2+bwdLW2WZjybHqUmmecFQnMgt4QMYx9lYsX/m7IJhyFVZJReqQIZLS62geA7Lx3pHmzAmtkpqCxO4bbSUiLXkism6i8qvX7MoL5/TetVfWTixa83OBrmQIVN9uRVuAxUWR/CADeBBFKkrNyRd2SMOkXSqWbkANglPlea2bubslveWvMDwIX+mxg=
+  email: $NPM_EMAIL
+  api_key: $NPM_KEY
   on:
     tags: true
     repo: lifeomic/react-vis-network
+    node: '8'
     branch: master
 - provider: pages
   skip-cleanup: true
