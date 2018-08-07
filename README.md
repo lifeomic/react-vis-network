@@ -2,6 +2,12 @@
 
 [![Build Status](https://travis-ci.org/lifeomic/react-vis-network.svg?branch=master)](https://travis-ci.org/lifeomic/react-vis-network)
 
+## Installation
+
+```bash
+yarn install @lifeomic/react-vis-network
+```
+
 ## Overview
 
 react-vis-network uses a declarative approach to defining [vis.js](https://github.com/almende/vis) networks. This allows developers to work in React using normal stateful approaches like [Redux](https://github.com/reduxjs/redux) and have the underlying network chart manage it's own lifecycle.
@@ -10,7 +16,7 @@ react-vis-network uses a declarative approach to defining [vis.js](https://githu
 
 ```js
 import React, { Component } from 'react';
-import { Network, Node, Edge } from 'react-vis-network';
+import { Network, Node, Edge } from '@lifeomic/react-vis-network';
 
 class MyNetwork extends Component {
   render() {

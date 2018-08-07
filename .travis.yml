@@ -18,10 +18,6 @@ addons:
     - g++-4.9
 env:
 - CXX=g++-4.9
-notifications:
-  slack:
-    secure: lbCF2YuEhYSGCmMrsqz1vOQlxdrPMqWWuek8rG62rjHrfT8jxfie7XMOE308VKBO7hoPXjIu37w0jRW/D29Xmdy0Jq6PNRAGArFrZ81fh2a4MdSXXC4icDu5VTwnL/Vsab7W5MGBXN4w8ew5HX0ga50VACh8+B5t6GSIMoV1OT3G4zhOdlnzzD4thAkoGYhX6vXlz6PHXURSmlN0DttM2PRToBzE86xZZwG6R9xSTDLt95UgoLze0GFWYy0VCESMWABjT8I+2YfztkRz4L1DzuGiN0vwAldbk3+ccMFKeFfFyajlQLcptVDgYVvh9XJ3NMycxj4+q/hWJAgH0AoVS83wbRqcLru7OQ2sZL/n4uIeCh+h1Z3XRYdfCcLdHmLjs88VDb2TF0scad6yUJ31H8iVkUsO9HO+WTA/KevkbPDxPc/iEnOQghQQcf4jjjX85Ii8TGCdLWhPzXY1rXgzbLJcZTrGalgwjVwI+mTEZx5tobpfde8jGQd9aAcEEC40LJPtzTQWHeUpAGz7B/JfOj6u80vHwjbBFl3w3kllfxDo99PEHFBsh7S4k78EIXjA47DaVv9eeCt9MvemGDweczi1me9AsTlqSusmjg5UgPaW0crbZ5xsc279zd/ngTWI/3CRlqwXsOMDhNQNOQD2o4b4ZQE9AXRNRLQgXw3M3A4=
-    on_failure: always
 deploy:
 - provider: npm
   skip-cleanup: true
@@ -32,11 +28,11 @@ deploy:
     repo: lifeomic/react-vis-network
     node: '8'
     branch: master
-- provider: pages
-  skip-cleanup: true
-  github-token:
-    secure: rgmC8kEEFAtRTuSimmtbZJhDOhbhyNH5BJMYKbLRoDTYeanL7hQ8rXGyjRzVbJCNEPJiINmCKsmIFw8GQmikzPeJffEZcRwZxPmeALW/+oMHs4YjGd4KxXyEcS/5H81Oz97nlnt84+ImawYkK1+CkKjUsVJsXfWAFRXNOka3Y9VDL5D937VX0IJubKN4sO2IBzwLFTYc9AQ+14FnPbLLdDA7J/Y5B5lSH3N6Rqll8fo3eA+M20A2EhQv11F1OLdXDDWWNK8/lg6zjUdb/3Q6ZrtHRfQL6kinXO4stsyYhWSDBQPwXKKlA5euyniKfsBQDuhoN625QSjLFX6S9nuhSQi9hoW5P1u2i+nQ5GunzxrAZkyyleDENwQFwL0Xi8L+vd5sE8jQmZ0XeJE/hsST/BtjMkqFbS7rq6o9SBKhqum3n2eN75ORCsi1eaumFx7kQOGEJceiyHOOXwiPZIBQrAXT7N5qSVCl2JYdOEEc0pWuIoKSv6ipT9pZnUGD/QY4wHW7FTatQP8uiet+cgC6Ox35wZNzhhBf+zpz1D5fvPKQBPAMQ6S5WFiGTC6e56rqQ2XNS2EYF8PhTP/YVNOFcJ4iNViOG9AS/PSLmiCqSlMywjRn8IFIi005TjORtwKYYtsh4ei1zbTrxa0uMMehmnTYtW3k/fdKyRQ5nB37Xvo=
-  keep-history: true
-  local-dir: storybook-static
-  on:
-    branch: master
+# - provider: pages
+#   skip-cleanup: true
+#   github-token:
+#     secure: rgmC8kEEFAtRTuSimmtbZJhDOhbhyNH5BJMYKbLRoDTYeanL7hQ8rXGyjRzVbJCNEPJiINmCKsmIFw8GQmikzPeJffEZcRwZxPmeALW/+oMHs4YjGd4KxXyEcS/5H81Oz97nlnt84+ImawYkK1+CkKjUsVJsXfWAFRXNOka3Y9VDL5D937VX0IJubKN4sO2IBzwLFTYc9AQ+14FnPbLLdDA7J/Y5B5lSH3N6Rqll8fo3eA+M20A2EhQv11F1OLdXDDWWNK8/lg6zjUdb/3Q6ZrtHRfQL6kinXO4stsyYhWSDBQPwXKKlA5euyniKfsBQDuhoN625QSjLFX6S9nuhSQi9hoW5P1u2i+nQ5GunzxrAZkyyleDENwQFwL0Xi8L+vd5sE8jQmZ0XeJE/hsST/BtjMkqFbS7rq6o9SBKhqum3n2eN75ORCsi1eaumFx7kQOGEJceiyHOOXwiPZIBQrAXT7N5qSVCl2JYdOEEc0pWuIoKSv6ipT9pZnUGD/QY4wHW7FTatQP8uiet+cgC6Ox35wZNzhhBf+zpz1D5fvPKQBPAMQ6S5WFiGTC6e56rqQ2XNS2EYF8PhTP/YVNOFcJ4iNViOG9AS/PSLmiCqSlMywjRn8IFIi005TjORtwKYYtsh4ei1zbTrxa0uMMehmnTYtW3k/fdKyRQ5nB37Xvo=
+#   keep-history: true
+#   local-dir: storybook-static
+#   on:
+#     branch: master
