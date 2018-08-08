@@ -3,9 +3,6 @@ node_js:
 - '8'
 - '9'
 - '10'
-branches:
-  only:
-  - master
 addons:
   apt:
     sources:
@@ -27,7 +24,6 @@ deploy:
     tags: true
     repo: lifeomic/react-vis-network
     node: '8'
-    branch: master
 # - provider: pages
 #   skip-cleanup: true
 #   github-token:
