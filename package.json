@@ -1,6 +1,6 @@
 {
   "name": "@lifeomic/react-vis-network",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Declarative vis.js network for react",
   "main": "lib/index.js",
   "scripts": {
