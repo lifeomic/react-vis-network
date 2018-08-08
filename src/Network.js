@@ -64,6 +64,7 @@ export default class VisNetwork extends PureComponent {
     if (options !== prevProps.options) {
       if (options.edges) {
         // Avoid blended nested object properties from throwing errors.
+        // TODO: Fix this up-stream, in vis.js
         ['forceDirection', 'roundness', 'type'].forEach(prop => {
           delete options.edges[prop];
         });
